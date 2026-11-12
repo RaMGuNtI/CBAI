@@ -1,0 +1,20 @@
+Acme Innovations — Product Specification and Warranty Guide
+
+1. Acme UltraBot X1
+The Acme UltraBot X1 is an autonomous AI workstation designed for edge computing and continuous telemetry data processing.
+- Battery Life: 18 hours of continuous operation on standard 120V power adapter.
+- Operating Temperature: -10 degrees Celsius to 50 degrees Celsius.
+- Storage: 2TB NVMe PCIe 4.0 SSD with hardware-level AES-256 encryption.
+- Connectivity: Wi-Fi 6E, Bluetooth 5.3, Gigabit Ethernet, and dual USB-C Thunderbolt 4 ports.
+
+2. Warranty and Return Policies
+- Return Window: Customers may return any undamaged Acme hardware within 30 calendar days of delivery for a 100% full refund.
+- Manufacturer Warranty: Every new device includes a 2-year limited warranty covering mechanical and electrical component defects.
+- Accidental Damage: Accidental liquid spills and physical drops are covered under the optional AcmeCare+ extended plan.
+- RMA Process: To initiate a return, contact support@acme-innovations.com with your serial number and invoice.
+
+3. Maintenance and Care
+- Clean exterior surfaces exclusively with isopropyl alcohol (70%) and a microfiber cloth.
+- Never submerge any component in water or expose the vents to pressurized steam.
+- Firmware updates are deployed over-the-air (OTA) on the first Tuesday of each month at 02:00 UTC.
+

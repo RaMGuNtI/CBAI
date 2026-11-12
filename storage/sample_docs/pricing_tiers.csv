@@ -1,0 +1,5 @@
+TierName,MonthlyPriceUSD,AnnualPriceUSD,MaxUsers,StorageGB,DedicatedSupport
+Starter,29,290,5,50,No
+Professional,99,990,25,500,Yes
+Enterprise,299,2990,Unlimited,5000,Yes (24/7 Priority)
+

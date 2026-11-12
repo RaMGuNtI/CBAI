@@ -1,0 +1,5 @@
+# Ignore all environment variable files
+.env*
+
+# Except the example template
+!.env.example

@@ -1,0 +1,56 @@
+import re
+from datetime import datetime, timedelta, timezone
+from typing import Optional, Any
+import jwt
+import bcrypt
+from app.core.config import settings
+
+
+def get_password_hash(password: str) -> str:
+    salt = bcrypt.gensalt()
+    return bcrypt.hashpw(password.encode("utf-8"), salt).decode("utf-8")
+
+
+def verify_password(plain_password: str, hashed_password: str) -> bool:
+    try:
+        return bcrypt.checkpw(
+            plain_password.encode("utf-8"),
+            hashed_password.encode("utf-8")
+        )
+    except Exception:
+        return False
+
+
+def create_access_token(data: dict, expires_delta: Optional[timedelta] = None) -> str:
+    to_encode = data.copy()
+    if expires_delta:
+        expire = datetime.now(timezone.utc) + expires_delta
+    else:
+        expire = datetime.now(timezone.utc) + timedelta(minutes=settings.ACCESS_TOKEN_EXPIRE_MINUTES)
+    to_encode.update({"exp": expire})
+    encoded_jwt = jwt.encode(to_encode, settings.SECRET_KEY, algorithm=settings.ALGORITHM)
+    return encoded_jwt
+
+
+def decode_access_token(token: str) -> Optional[dict]:
+    try:
+        decoded = jwt.decode(token, settings.SECRET_KEY, algorithms=[settings.ALGORITHM])
+        return decoded
+    except jwt.PyJWTError:
+        return None
+
+
+def sanitize_filename(filename: str) -> str:
+    """
+    Remove path traversal sequences, special shell characters, and unsafe chars.
+    """
+    cleaned = re.sub(r'[\\/*?:"<>|]', "", filename)
+    cleaned = cleaned.replace("..", "")
+    return cleaned.strip()
+
+
+def mask_api_key(key: str) -> str:
+    if not key or len(key) < 8:
+        return "****"
+    return key[:4] + "..." + key[-4:]
+
